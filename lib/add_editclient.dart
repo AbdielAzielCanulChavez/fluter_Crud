@@ -1,3 +1,4 @@
+import 'package:fluter_vscode/main.dart';
 import 'package:flutter/material.dart';
 import 'package:fluter_vscode/model/client_model.dart';
 import 'package:fluter_vscode/db/database.dart';
@@ -78,15 +79,22 @@ import 'package:fluter_vscode/db/database.dart';
                               name: nameEditingController.text,
                           phone: phoneEditingController.text,
                           id: widget.client.id));
+
                           Navigator.pop(context);
+                          Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) =>MyHomePage()
+                          ));
                         }else {
                           await ClientDatabaseProvider.db.addClientToDatabase(new Client(
                             name: nameEditingController.text,
                             phone: phoneEditingController.text,
-                          )
-                          );
+
+                          ));
 
                           Navigator.pop(context);
+                            Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => MyHomePage()
+                            ));
                         }
                       },
                     )

@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
     void didUpdateWidget(MyHomePage oldWidget){
       super.didUpdateWidget(oldWidget);
       setState(() {
-        
+
       });
     }
 
@@ -73,7 +73,8 @@ class MyApp extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index){
                   Client item = snapshot.data[index];
                   return Dismissible(
-                    key: UniqueKey(), 
+
+                    key: UniqueKey(),
                     background: Container(color: Colors.red),
                     onDismissed: (diretion){
                       ClientDatabaseProvider.db.deleteClientWithId(item.id);
@@ -83,6 +84,7 @@ class MyApp extends StatelessWidget {
                       subtitle: Text(item.phone),
                       leading: CircleAvatar(child: Text(item.id.toString())),
                       onTap: () {//este es el setOnClickListener de flutter
+                        Navigator.pop(context);
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => AddEditClient(
                           true, 
@@ -104,6 +106,7 @@ class MyApp extends StatelessWidget {
           onPressed: (){
             Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => AddEditClient(false)));
+
             
           },
       ),

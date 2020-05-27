@@ -47,6 +47,7 @@ Future<List<Client>> getAllClients() async{
   return list;
 }
 
+
 //query a la base de datos
 //mostrar un solo cliente
 Future<Client> getClientWithId(int id) async{
@@ -54,6 +55,7 @@ Future<Client> getClientWithId(int id) async{
   var response = await db.query(tabla, where: "id = ?", whereArgs: [id]);
   return response.isNotEmpty ? Client.fromMap(response.first) : null;
 }//mostrar un solo cliente
+
 
 //insert
 addClientToDatabase(Client client) async{
@@ -65,11 +67,14 @@ addClientToDatabase(Client client) async{
   return raw;
 }//finaliza insert
 
+
 //delete 
 deleteClientWithId(int id) async{
   final db = await database;
   return db.delete(tabla, where: "id = ?", whereArgs: [id]);
 }
+
+
 
 //delete all client
 
